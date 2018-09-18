@@ -20,18 +20,29 @@ npm install
 
 ## Running
 
+This script takes in a list (-l) of keywords in comma-delimited format. (eg, johndoe,xrp,tothemoon). The other options are not mandatory.
+
+```Options:
+
+  -V, --version                                         output the version number
+  -l, --list <keywords to check with ',' as delimiter>  List of comma-delimited keywords to check against
+  -o, --output <file>                                   Output file for results
+  -h, --help                                            output usage information
+```
+
+To run the script in the foreground:
 ```
 node generate.js -o output.txt -l johndoe,xrp,tothemoon
 ```
 
 To run it in the background:
 ```
-nohup node generate.js -o output.txt -l johndoe,xrp,tothemoon
+nohup node generate.js -o output.txt -l johndoe,xrp,tothemoon &
 ```
 
 To stop running in background:
 ```
-ps aux | grep node
+ps aux | grep generate.js
 kill -9 <pid>
 ```
 

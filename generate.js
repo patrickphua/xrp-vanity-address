@@ -8,7 +8,7 @@ function list(val) {
 }
 
 program
-    .usage("generate [options]")
+    .usage("[options]")
     .version("1.0.0")
     .option("-l, --list <keywords to check with ',' as delimiter>", "List of comma-delimited keywords to check against", list)
     .option("-o, --output <file>", "Output file for results")
