@@ -57,7 +57,7 @@ console.log("====================================");
 console.log("Generating..... press Control C to quit");
 
 var re = new RegExp(regex, "i");
-var counterMatch = 0;
+let counterMatch = 0;
 for (let counterProcessed = 0;;counterProcessed++) {
     account = api.generateAddress();
     if (re.exec(account.address)) {
@@ -65,7 +65,7 @@ for (let counterProcessed = 0;;counterProcessed++) {
 		counterMatch++;
         console.log("Found a match: " + account.address + " at the " + counterProcessed + "th tries");
     } else {
-		if (i % 10000 === 0) {
+		if (counterProcessed % 10000 === 0) {
 			console.log("Processed: " + counterProcessed + ". Found " + counterMatch + " match(es) so far");
 		}
 	}
