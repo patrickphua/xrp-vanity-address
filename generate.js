@@ -57,16 +57,16 @@ console.log("====================================");
 console.log("Generating..... press Control C to quit");
 
 var re = new RegExp(regex, "i");
-for (let i = 0;;i++) {
-	let n = 0;
+let counterMatch = 0;
+for (let counterProcessed = 0;;counterProcessed++) {
     account = api.generateAddress();
     if (re.exec(account.address)) {
         fs.appendFileSync(outputFile, "Address: [" + account.address + "] with Secret: [" + account.secret + "]\n");
-		n++;
-        console.log("Found a match: " + account.address + " at the " + i + "th tries");
+		counterMatch++;
+        console.log("Found a match: " + account.address + " at the " + counterProcessed + "th tries");
     } else {
 		if (i % 10000 === 0) {
-			console.log("Processed: " + i + ". Found " + n + " match(es) so far");
+			console.log("Processed: " + counterProcessed + ". Found " + counterMatch + " match(es) so far");
 		}
 	}
 }
