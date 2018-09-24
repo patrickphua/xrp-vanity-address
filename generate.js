@@ -57,7 +57,7 @@ console.log("====================================");
 console.log("Generating..... press Control C to quit");
 
 var re = new RegExp(regex, "i");
-let counterMatch = 0;
+var counterMatch = 0;
 for (let counterProcessed = 0;;counterProcessed++) {
     account = api.generateAddress();
     if (re.exec(account.address)) {
