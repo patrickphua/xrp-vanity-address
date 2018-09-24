@@ -42,7 +42,7 @@ program.list.forEach(function(k) {
 });
 var regex = "^r(" + program.list.join('|') + ")";
 
-var outputFile = "output.txt";
+var outputFile = "output.txt";	// default
 console.log();
 console.log("Output file: ");
 if (program.output === undefined) {
@@ -57,10 +57,15 @@ console.log("====================================");
 console.log("Generating..... press Control C to quit");
 
 var re = new RegExp(regex, "i");
-while (true) {
+for (let i = 0;;i++) {
+	let n = 0;
     account = api.generateAddress();
     if (re.exec(account.address)) {
         fs.appendFileSync(outputFile, "Address: [" + account.address + "] with Secret: [" + account.secret + "]\n");
-        console.log("Found address: " + account.address);
-    }
+        console.log("Found a match: " + account.address + " at the " + i + "th tries".);
+    } else {
+		if (i % 10000 === 0) {
+			console.log("Processed: " + i + ". Found " + n + " match(es) so far");
+		}
+	}
 }
