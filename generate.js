@@ -62,6 +62,7 @@ for (let i = 0;;i++) {
     account = api.generateAddress();
     if (re.exec(account.address)) {
         fs.appendFileSync(outputFile, "Address: [" + account.address + "] with Secret: [" + account.secret + "]\n");
+		n++;
         console.log("Found a match: " + account.address + " at the " + i + "th tries");
     } else {
 		if (i % 10000 === 0) {
